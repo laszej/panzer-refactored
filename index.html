@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panzer Warfare</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="main-menu">
+        <h1 class="game-title">PANZER WARFARE</h1>
+        <div class="campaigns">
+            <button class="campaign-btn german" id="german-campaign-btn">Kampania Niemiecka</button>
+            <button class="campaign-btn soviet" id="soviet-campaign-btn">Kampania Radziecka</button>
+        </div>
+    </div>
+
+    <div id="german-campaign-selection" class="campaign-selection">
+        <img src="assets/images/cross.png" alt="German Campaign Logo" class="campaign-logo">
+        <button class="start-campaign-btn" id="start-german-campaign">Rozpocznij Kampanię</button>
+        
+        <div class="units-container">
+            <div class="unit-card" data-unit="tiger">
+                <div class="unit-model" style="background-image: url('assets/images/Tiger2_3d.gif');"></div>
+                <div class="unit-name">Panzer VI Tiger</div>
+            </div>
+            <div class="unit-card" data-unit="panther">
+                <div class="unit-model" style="background-image: url('assets/images/panther3d.gif');"></div>
+                <div class="unit-name">Panzer V Panther</div>
+            </div>
+            <div class="unit-card" data-unit="stug">
+                <div class="unit-model" style="background-image: url('assets/images/stug43d.gif');"></div>
+                <div class="unit-name">Stug IV</div>
+            </div>
+            <div class="unit-card" data-unit="leopard">
+                <div class="unit-model" style="background-image: url('assets/images/leo13d.gif');"></div>
+                <div class="unit-name">Leopard I</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="soviet-campaign-selection" class="campaign-selection">
+        <img src="assets/images/cross.png" alt="Soviet Campaign Logo" class="campaign-logo">
+        <button class="start-campaign-btn" id="start-soviet-campaign">Rozpocznij Kampanię</button>
+        
+        <div class="units-container">
+            <div class="unit-card" data-unit="t34">
+                <div class="unit-model" style="background-image: url('assets/images/t34_3d.gif');"></div>
+                <div class="unit-name">T-34</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="german-campaign" class="game-screen german-campaign">
+        <button class="back-btn">Powrót do menu</button>
+        <div class="game-map"></div>
+        <div class="instructions">Kliknij na swój czołg aby go wybrać, następnie kliknij gdzie chcesz go przesunąć</div>
+        
+        <div class="victory-screen" id="german-victory">
+            <div class="victory-message">ZWYCIĘSTWO!<br>Pokonałeś wrogi czołg!</div>
+            <button class="victory-btn">Powrót do menu głównego</button>
+        </div>
+    </div>
+
+    <div id="soviet-campaign" class="game-screen soviet-campaign">
+        <button class="back-btn">Powrót do menu</button>
+        <div class="game-map"></div>
+        <div class="instructions">Kliknij na swój czołg aby go wybrać, następnie kliknij gdzie chcesz go przesunąć</div>
+        
+        <div class="victory-screen" id="soviet-victory">
+            <div class="victory-message">ZWYCIĘSTWO!<br>Pokonałeś wrogi czołg!</div>
+            <button class="victory-btn">Powrót do menu głównego</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/units.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/game.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

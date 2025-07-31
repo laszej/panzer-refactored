@@ -1,0 +1,374 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: white;
+    overflow: hidden;
+}
+
+/* Strona główna */
+#main-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('../assets/images/mainmenubackground.jpg') center/cover;
+}
+
+.game-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px #000;
+    color: #e0a800;
+    text-align: center;
+}
+
+.campaigns {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.campaign-btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background: rgba(50, 50, 50, 0.7);
+    color: white;
+    border: 2px solid #e0a800;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.campaign-btn:hover {
+    background: rgba(100, 100, 100, 0.7);
+    transform: scale(1.05);
+}
+
+.campaign-btn.german {
+    border-color: #6c757d;
+}
+
+.campaign-btn.soviet {
+    border-color: #dc3545;
+}
+
+/* Ekran wyboru kampanii */
+.campaign-selection {
+    display: none;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                url('../assets/images/cross.png') center/cover;
+}
+
+.campaign-logo {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    width: 15vmin;
+    height: auto;
+    max-width: 150px;
+}
+
+.start-campaign-btn {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    padding: 1vh 2vw;
+    font-size: 1.2rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 20vw;
+}
+
+.start-campaign-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.units-container {
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    flex-wrap: wrap;
+    padding: 0 2vw;
+    box-sizing: border-box;
+}
+
+.unit-card {
+    width: 30vmin;
+    height: 40vmin;
+    min-width: 150px;
+    min-height: 200px;
+    text-align: center;
+    background: rgba(50, 50, 50, 0.7);
+    border-radius: 1vmin;
+    padding: 1.5vmin;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.3vmin solid #e0a800;
+    position: relative;
+    cursor: pointer;
+}
+
+.unit-card:hover {
+    transform: scale(1.05);
+    background: rgba(70, 70, 70, 0.7);
+    box-shadow: 0 0 2vmin #e0a800;
+}
+
+.unit-card.selected {
+    border-color: #4CAF50;
+    box-shadow: 0 0 2vmin #4CAF50;
+}
+
+.unit-model {
+    width: 90%;
+    height: 70%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 1vmin auto;
+    flex-grow: 1;
+}
+
+.unit-name {
+    margin-top: auto;
+    padding-top: 1vmin;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e0a800;
+    width: 100%;
+}
+
+/* Ekran gry */
+.game-screen {
+    display: none;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.game-map {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.german-campaign .game-map {
+    background-image: url('../assets/images/terrain.webp');
+}
+
+.soviet-campaign .game-map {
+    background-image: url('../assets/images/terrain.webp');
+}
+
+.unit {
+    width: 20vmin;
+    height: 30vmin;
+    background-size: 500% 1800%;
+    position: absolute;
+    transition: top 0.5s linear, left 0.5s linear;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.enemyUnit {
+    width: 20vmin;
+    height: 30vmin;
+    background-size: 500% 1800%;
+    position: absolute;
+    transform-origin: center;
+}
+
+.unit.selected {
+    outline: 0.3vmin solid yellow;
+    box-shadow: 0 0 1vmin yellow;
+}
+
+.health-bar {
+    position: absolute;
+    top: -1.5vmin;
+    left: 0;
+    width: 100%;
+    height: 0.5vmin;
+    background-color: #333;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    background-color: #4CAF50;
+    transition: width 0.1s;
+}
+
+.battle-indicator {
+    position: absolute;
+    top: -3vmin;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.2vmin 0.5vmin;
+    border-radius: 0.3vmin;
+    font-size: 1.2vmin;
+    display: none;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.instructions {
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1vmin;
+    border-radius: 0.5vmin;
+    text-align: center;
+    max-width: 90%;
+    box-sizing: border-box;
+    font-size: 1.5vmin;
+}
+
+/* Ekran zwycięstwa */
+.victory-screen {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    padding: 2vmin;
+    box-sizing: border-box;
+}
+
+.victory-message {
+    font-size: 5vmin;
+    color: gold;
+    margin-bottom: 2vmin;
+    text-align: center;
+    text-shadow: 0.2vmin 0.2vmin 0.4vmin #000;
+}
+
+.victory-btn {
+    padding: 1vmin 2vmin;
+    font-size: 2vmin;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0.5vmin;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 20vmin;
+}
+
+.victory-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsywność - Mobile */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .campaigns {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .campaign-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .unit-card {
+        width: 25vmin;
+        height: 30vmin;
+    }
+    
+    .unit-model {
+        width: 20vmin;
+        height: 20vmin;
+    }
+    
+    .unit-name {
+        font-size: 0.9rem;
+    }
+
+    .unit, .enemyUnit {
+        width: 25vmin;
+        height: 35vmin;
+    }
+
+    .victory-message {
+        font-size: 6vmin;
+    }
+
+    .instructions {
+        font-size: 2vmin;
+        bottom: 1vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .unit-card {
+        width: 28vmin;
+        height: 32vmin;
+    }
+    
+    .unit-model {
+        width: 22vmin;
+        height: 22vmin;
+    }
+
+    .unit, .enemyUnit {
+        width: 30vmin;
+        height: 40vmin;
+    }
+
+    .victory-message {
+        font-size: 7vmin;
+    }
+}
